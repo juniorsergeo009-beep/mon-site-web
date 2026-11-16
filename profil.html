@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma première page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        a {
+    color: #0a7d36;
+    text-decoration: none;
+    font-weight: bold;
+}
+a:hover {
+    text-decoration: underline;
+}
+        h1 {
+            color: #0a7d36;
+            text-align: center;
+        }
+        h2 {
+            color: #0a7d36;
+            border-bottom: 2px solid #0a7d36;
+        }
+        button {
+            background-color: #0a7d36;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #085c28;
+        }
+        
+        /* LE CSS DE L'IMAGE DOIT ETRE ICI, DANS LE STYLE */
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #0a7d36;
+            object-fit: cover;
+            margin-top: 20px; /* Un peu d'espace au-dessus */
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenue sur ma page</h1>
+    <a href="index.html">Retour à l'accueil</a>    
+    <!-- VOICI LA BALISE IMAGE CORRECTE -->
+    <br>
+    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=150&q=80" alt="Mon avatar">
+    <br><br>
+
+    <p>Je m'appelle jean marie et j'apprends à coder.</p>
+
+    <button onclick="direBonjour()">Clique-moi</button>
+    <p id="message"></p>
+    
+    <hr>
+
+    <button onclick="modeClair()">Mode clair</button>
+    <button onclick="modeSombre()">Mode sombre</button>
+    <script>
+        function direBonjour() {
+            document.getElementById("message").textContent = "Bonjour Jean Marie ! 👋";
+        }
+
+        function modeClair() {
+            document.body.style.backgroundColor = "white";
+            document.body.style.color = "#333333";
+        }
+
+        function modeSombre() {
+            document.body.style.backgroundColor = "black";
+            document.body.style.color = "white";
+        }
+    </script>
+</body>
+</html>
