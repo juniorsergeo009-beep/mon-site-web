@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vérificateur de liens</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #f4f4f4; color: #333333; }
+    h1 { color: #0a7d36; text-align: center; }
+    input { width: 100%; padding: 10px; font-size: 16px; box-sizing: border-box; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+    #resultat { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Vérificateur de liens</h1>
+  <p>Colle un lien pour savoir s'il mène vraiment à GitHub.</p>
+  <input type="text" id="lien" placeholder="https://...">
+  <button onclick="verifier()">Vérifier</button>
+  <p id="resultat"></p>
+
+  <script>
+    function domaine(lien) {
+      let hote = lien.replace("https://", "").replace("http://", "").split("/")[0];
+      let parties = hote.split(".");
+      if (parties.length < 2) {
+        return hote;
+      }
+      return parties[parties.length - 2] + "." + parties[parties.length - 1];
+    }
+
+    function verifier() {
+      let lien = document.getElementById("lien").value.trim();
+      let resultat = document.getElementById("resultat");
+
+      if (lien === "") {
+        resultat.textContent = "Colle un lien d'abord.";
+        return;
+      }
+
+      let d = domaine(lien);
+      if (d === "github.com") {
+        resultat.textContent = "OK : le vrai site est github.com";
+        resultat.style.color = "green";
+      } else {
+        resultat.textContent = "DANGER : le vrai site est " + d;
+        resultat.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
